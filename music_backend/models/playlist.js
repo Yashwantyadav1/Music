@@ -12,15 +12,24 @@ const playlist = new mangoose.schema({
         type: string,
         required: true,
     },
-    track: {
-        type: string,
-        required: true,
-    },
-    artist: {
+    owner: {
         type: mangoose.Type.objectId,
         ref: "user",
     },
-});
- const SongModel = mongoose.model("Song",Song);
+    songs: [{
+        type: mongoose.Type.objectId,
+        ref: "song",
+       
+    },
+ ],
+ collaborators:[
+    {
+        type: mongoose.Type.objectId,
+        ref: "user",
+    },
+ ],
 
- module.exports = SongModel; 
+});
+ const playlistModel = mongoose.model("playlist",playlist);
+
+ module.exports = playlistModel; 
