@@ -1,7 +1,7 @@
 {
   "name": "music_backend",
   "version": "1.0.0",
-  "description": "this will contain the backend code for music clone",
+  "description": "this will contain the backend code for our music app",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
