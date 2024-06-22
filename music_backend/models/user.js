@@ -38,4 +38,4 @@ const User = new mangoose.schema({
 });
  const UserModel = mongoose.model("User",User);
 
- module.exports = Usermodel;
+ module.exports = Usermodel; 
