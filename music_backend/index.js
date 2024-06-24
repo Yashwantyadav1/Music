@@ -1,36 +1,27 @@
-// wew use express
+// Import required modules
 const express = require("express");
 const mongoose = require("mongoose");
-require("dotenv").config();
+const dotenv = require('dotenv');  // Import dotenv correctly
+dotenv.config();
+// Initialize Express app
 const app = express();
-const port = 8000;
-// console.log(process.env);
+const port = process.env.PORT || 8000;
 
-// connect mongodb to our node app
-// mongoose.connect() takes two argument : 1.which db to connect(db url)
-// 2. connection option
-mongoose.connect(" mongodb+srv://admin:"+ process.env.MONGO_PASSWORD +"@cluster0.e1woxxr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0 ",
-    {
-        useNewUrlparser: true,
-        useUnifiedTopology: true,
-    }
-    )
-    .then((x)=> {
-        console.log("connected to mongo");
-
+// Connect to MongoDB using mongoose
+mongoose.connect(process.env.URI)
+    .then(() => {
+        console.log("Connected to MongoDB");
     })
-    .catch((err)=> {
-        console.log("Error while connecting to mongo");
+    .catch((err) => {
+        console.error("Error connecting to MongoDB:", err.message);
     });
 
-
-// API : GET type:/: return text"hello world"
-app.get("/",(req , res) =>{
-    // req contain all data for the request
-    // res contains all data for the response
+// Define a basic route
+app.get("/", (req, res) => {
     res.send("HELLO WORLD");
 });
-// now we want to tell express that our server will run on localhost :8000
-app.listen(port, ()=>{
-    console.log("App is running on port "+port);
+
+// Start the Express server
+app.listen(port, () => {
+    console.log(`App is running on port ${port}`);
 });
