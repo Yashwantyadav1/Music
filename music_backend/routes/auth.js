@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/user");
+const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const {getToken} = require("../utils/helpers");
 
@@ -9,10 +9,10 @@ router.post("/register",async (req, res) => {
     // This code is run when the register api is called as a post request
 
     // My req.body will be of the format {email,password,firstName,LastName,userName}
-    const {email, passport, firstName, LastName, userName} = req.body;
+    const {email, password, firstName, LastName, userName} = req.body;
 
     // step 2: Does a user with this email already exist ? If yes throw error.
-    const user = User.findone({email:email});
+    const user = await User.findone({email:email});
     if( user) {
         // bydefault status code is 200
         return res.status(403).json({error: "A useer with this email already exist "});
@@ -34,3 +34,4 @@ router.post("/register",async (req, res) => {
     delete userToReturn.password;
     return res.status(200).json(userToReturn);
 });
+module.exports = router;

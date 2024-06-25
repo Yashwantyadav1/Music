@@ -1,9 +1,9 @@
 // To create model we follow some steps
 // step1 : require mangoose
-const mongoose = require("mangoose");
+const mongoose = require("mongoose");
 // step 2: create mangoose schema (structure of a user)
 // step3: create a model
-const Song = new mangoose.schema({
+const Song = new mongoose.Schema({
     name: {
         type: string,
         required: true,
@@ -17,7 +17,7 @@ const Song = new mangoose.schema({
         required: true,
     },
     artist: {
-        type: mangoose.Type.objectId,
+        type: mongoose.Type.objectId,
         ref: "user",
     },
 });

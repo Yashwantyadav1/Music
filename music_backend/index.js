@@ -6,10 +6,13 @@ dotenv.config();
 const JwtStrategy = require('passport-jwt').Strategy,
     ExtractJwt = require('passport-jwt').ExtractJwt;
 const passport = require("passport");
-const User = require("./models/user");
+const User = require("./models/User");
+const authRoutes = require("./routes/auth");
 // Initialize Express app
 const app = express();
 const port = process.env.PORT || 8000;
+
+app.use(express.json());
 
 // Connect to MongoDB using mongoose
 mongoose.connect(process.env.URI)
@@ -45,6 +48,8 @@ passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
 app.get("/", (req, res) => {
     res.send("HELLO WORLD");
 });
+
+app.use("/auth", authRoutes);
 
 // Start the Express server
 app.listen(port, () => {
