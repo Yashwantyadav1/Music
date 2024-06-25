@@ -8,6 +8,7 @@ const JwtStrategy = require('passport-jwt').Strategy,
 const passport = require("passport");
 const User = require("./models/User");
 const authRoutes = require("./routes/auth");
+const songRoutes = require("./routes/song")
 // Initialize Express app
 const app = express();
 const port = process.env.PORT || 8000;
@@ -50,6 +51,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authRoutes);
+app.use("/song", songRouters);
 
 // Start the Express server
 app.listen(port, () => {
