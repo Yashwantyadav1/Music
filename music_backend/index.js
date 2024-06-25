@@ -1,14 +1,59 @@
-// wew use express
+// Import required modules
 const express = require("express");
+const mongoose = require("mongoose");
+const dotenv = require('dotenv');  // Import dotenv correctly
+dotenv.config();
+const JwtStrategy = require('passport-jwt').Strategy,
+    ExtractJwt = require('passport-jwt').ExtractJwt;
+const passport = require("passport");
+const User = require("./models/User");
+const authRoutes = require("./routes/auth");
+// Initialize Express app
 const app = express();
-const port = 8000;
-// API : GET type:/: return text"hello world"
-app.get("/",(req , res) =>{
-    // req contain all data for the request
-    // res contains all data for the response
+const port = process.env.PORT || 8000;
+
+app.use(express.json());
+
+// Connect to MongoDB using mongoose
+mongoose.connect(process.env.URI)
+    .then(() => {
+        console.log("Connected to MongoDB");
+    })
+    .catch((err) => {
+        console.error("Error connecting to MongoDB:", err.message);
+    });
+
+    // passport-jwt setup
+
+
+let opts = {};
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.secretOrKey = 'thiskeysupposedToBeSecerate';
+passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
+    User.findOne({id: jwt_payload.sub}, function(err, user) {
+        // done (error ,doestheuserExist)
+        if (err) {
+            return done(err, false);
+        }
+        if (user) {
+            return done(null, user);
+        } else {
+            return done(null, false);
+            // or you could create a new account
+        }
+    });
+}));
+
+// Define a basic route
+app.get("/", (req, res) => {
     res.send("HELLO WORLD");
 });
-// now we want to tell express that our server will run on localhost :8000
-app.listen(port, ()=>{
-    console.log("App is running on port "+port);
+
+app.use("/auth", authRoutes);
+
+// Start the Express server
+app.listen(port, () => {
+    console.log(`App is running on port ${port}`);
 });
+
+
