@@ -9,8 +9,10 @@
     "@testing-library/user-event": "^13.5.0",
     "ajv": "^8.16.0",
     "ajv-keywords": "^5.1.0",
+    "postcss": "^8.4.38",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^6.24.0",
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -40,7 +42,6 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.8.8",
-    "postcss": "^7.0.39",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   }
 }
