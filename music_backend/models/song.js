@@ -5,19 +5,19 @@ const mongoose = require("mongoose");
 // step3: create a model
 const Song = new mongoose.Schema({
     name: {
-        type: string,
+        type: String,
         required: true,
     }, 
     thumbnail:{
-        type: string,
+        type: String,
         required: true,
     },
     track: {
-        type: string,
+        type: String,
         required: true,
     },
     artist: {
-        type: mongoose.Type.objectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "user",
     },
 });

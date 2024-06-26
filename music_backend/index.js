@@ -51,7 +51,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authRoutes);
-app.use("/song", songRouters);
+app.use("/song", songRoutes);
 
 // Start the Express server
 app.listen(port, () => {
