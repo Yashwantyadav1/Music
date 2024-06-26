@@ -3,13 +3,13 @@
 const mongoose = require("mangoose");
 // step 2: create mangoose schema (structure of a user)
 // step3: create a model
-const playlist = new mangoose.schema({
+const playlist = new mangoose.Schema({
     name: {
-        type: string,
+        type: String,
         required: true,
     }, 
     thumbnail:{
-        type: string,
+        type: String,
         required: true,
     },
     owner: {
