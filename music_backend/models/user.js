@@ -1,18 +1,24 @@
-// To create model we follow some steps
-// step1 : require mangoose
 const mongoose = require("mongoose");
-// step 2: create mangoose schema (structure of a user)
-// step3: create a model
+// How to create a model
+// Step 1 :require mongoose
+// Step 2 :Create a mongoose schema (structure of a user)
+// Step 3 : Create a model
+
 const User = new mongoose.Schema({
     firstName: {
         type: String,
         required: true,
     },
-    lastName: { 
+    password: {
+        type: Number,
+        required: true,
+        private: true,
+    },
+    lastName: {
         type: String,
         required: false,
     },
-    email:{
+    email: {
         type: String,
         required: true,
     },
@@ -20,22 +26,23 @@ const User = new mongoose.Schema({
         type: String,
         required: true,
     },
-    likedsongs: {
-        // we will changee this to array  later
+    likedSongs: {
+        // We will change this to array later
         type: String,
         default: "",
     },
-    likedplaylist:{
-        // we will changee this to array  later
+    likedPlaylists: {
+        // We will change this to array later
         type: String,
         default: "",
     },
-    suscribedArtist: {
-        // we will changee this to array  later
+    subscribedArtists: {
+        // We will change this to array later
         type: String,
         default: "",
     },
 });
- const UserModel = mongoose.model("User",User);
 
- module.exports = UserModel; 
+const UserModel = mongoose.model("User", User);
+
+module.exports = UserModel;
