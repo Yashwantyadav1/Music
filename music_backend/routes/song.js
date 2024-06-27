@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const Song = require("../models/Song");
+
+const song = require("../models/Song");
+const User = require("../models/User");
 
 
 router.post("/create", passport.authenticate("jwt",{session:false}),
@@ -28,5 +30,35 @@ async(req, res) =>{
     return res.status(200).json({data:song});
     
 }
+);
+
+// Get route to get all song any artist has published 
+// I will send the artist id and I want to see all song that artist has published .
+router.get(
+    "/get/artist",
+    passport.authenticate("jwt", {session:false}),
+    async (req,res) => {
+        const {artistId} = req.body;
+        // We can check if the aetist does not exist
+        const artist = await User.find({_id: artistId});
+        if(!artist){
+            return res.status(301).json({err:"Artist does not exist"});
+        }
+
+        const song = await Song.find({artist: artistId});
+        return res.status(200).json({data:song});
+    }
+);
+// Get route to  get a single song by name 
+router.get(
+    "/get/songname",
+    passport.authenticate("jwt",{session:false}),
+    async (req,res) =>{
+        const {songName} = req.body;
+         // name:songName --->exact name matching . Vanilla, vanila.
+         // Pattern matching instead of direct name matching.
+        const song = await Song.find({name: songName});
+        return res.status(200).json({data: songs});
+    }
 );
 module.exports = router;
