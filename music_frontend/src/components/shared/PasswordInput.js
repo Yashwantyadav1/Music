@@ -4,7 +4,7 @@ const TextInput =({label,placeholder}) =>{
             <label for={label} className="font-semibold">
                 {label}
             </label>
-            <input type="text" placeholder={placeholder} className="p-1 border border-gray-400 border-solid rounded placeholder-gray-500" id={label}/>
+            <input type="password" placeholder={placeholder} className="p-1 border border-gray-400 border-solid rounded placeholder-gray-500" id={label}/>
         </div>
     );
     
