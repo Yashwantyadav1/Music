@@ -11,9 +11,11 @@ const LoginComponent = () => {
                 <div className="font-bold mb-4">To continue, login to Music.</div>
                 <TextInput label="Email address or username" placeholder="Email address or username" className="my-6"/>
                 <PasswordInput label="Password" placeholder="Password"/>
-                <div className="w-full flex item-center justify-end mt-8 border-b border-solid border-gray-300">
+                <div className="w-full flex item-center justify-end my-8">
                     <button className="bg-red-400 font-semibold p-3 px-10 rounded-full">LOG IN</button>
                 </div>
+                <div className="w-full border border-solid border-gray-300"></div>
+                <div className="my-6 font-semibold text-xl">Don't have an account?</div>
             </div>
         </div>
     )
