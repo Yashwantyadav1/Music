@@ -9,8 +9,9 @@ const LoginComponent = () => {
             </div>
             <div className = "inputRegion w-1/3 py-10 flex items-center justify-center flex-col">
                 <div className="font-bold mb-12">To continue, login to Music.</div>
-                <TextInput label="Email address or username" placeholder="Email address or username"/>
+                <TextInput label="Email address or username" placeholder="Email address or username" className="my-6"/>
                 <PasswordInput label="Password" placeholder="Password"/>
+                <button className="bg-red-400 text-lg font-semibold">LOG IN</button>
             </div>
         </div>
     )
