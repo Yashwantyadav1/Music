@@ -11,7 +11,7 @@ const LoginComponent = () => {
                 <div className="font-bold mb-12">To continue, login to Music.</div>
                 <TextInput label="Email address or username" placeholder="Email address or username" className="my-6"/>
                 <PasswordInput label="Password" placeholder="Password"/>
-                <button className="bg-red-400 text-lg font-semibold">LOG IN</button>
+                <button className="bg-red-400 text-lg font-semibold p-3 px-10 rounded-full">LOG IN</button>
             </div>
         </div>
     )
