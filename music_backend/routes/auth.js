@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const {getToken} = require("../utils/helpers");
+// const { get } = require("mongoose");
 
 // This POST route will help to register a user
 router.post("/register", async (req, res) => {
@@ -76,5 +77,29 @@ router.post("/login", async (req, res) => {
     delete userToReturn.password;
     return res.status(200).json(userToReturn);
 });
+
+router.post("/login", async (req, res) => {
+    // step1: Get email and password sent by the user from req.body
+     const {email, password} = req.body;
+    // step2: Check if a user with the given email exists. if not the credential are 
+    const user = await User.findOne({email: email});
+    if (!user){
+        return res.status(403).json({err: "Invalid credentials"});
+    }
+    // step3: If the user exist check if the password is correct . if not the credential are 
+    // this is a tricky step . why? Because we have stored the original password in a hashedd form , which we can not use to get the password  
+    // I can not do : If (password=== User .password);
+    // bcrypt.compare enabled us to compare 1 password in plaintext (password from req.body) to a hashed password (the one in our DB) securely  
+    const isPasswordValid = await bcrypt.compare(password, user.password); 
+    // This will be true or false .
+    if(!isPasswordValid){
+        return res.status(403).json({err: "Invalid credentials"});
+    }
+    // step4: If the credential are correct , return a token to their user.
+    const token = await getToken(user.email, User);
+    const userToReturn = {...User.toJSON(), token};
+    delete userToReturn.password;
+    return res.status(200).json(userToReturn);
+}); 
 
 module.exports = router;
