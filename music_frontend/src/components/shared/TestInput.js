@@ -1,5 +1,5 @@
 const TextInput =() =>{
-    return  <h1>hi</h1>;
+    return  <input type="text" placeholder="Place" className="p-1 border border-gray-400 border-solid rounded placeholder-gray-500"/>
     
 };
 
