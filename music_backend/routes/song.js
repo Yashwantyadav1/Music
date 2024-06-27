@@ -6,7 +6,7 @@ const song = require("../models/Song");
 const User = require("../models/User");
 
 
-router.post("/create", passport.authenticate("jwt",{session:false}),
+router.post("/create", passport.authenticate("jwt",{session: false}),
 async (req, res) => {
     // req.user gets the user because of passport.authenticate
     const {name, thumbnail,track} = req.body;
@@ -22,13 +22,12 @@ async (req, res) => {
 });
 
 // Get router to get all song I have published.
-router.get("/get/mysongs",passport.authenticate("jwt", {session:false}),
-async(req, res) =>{
+router.get("/get/mysongs", passport.authenticate("jwt", {session: false}),
+async(req, res) => {
     const currentUser = req.user;
     // We need to get all song where artist id == currentUser._id
-    const song = await song.find({artist: req.user._id});
-    return res.status(200).json({data:song});
-    
+    const songs = await Song.find({artist: req.user._id});
+    return res.status(200).json({data:songs});
 }
 );
 
