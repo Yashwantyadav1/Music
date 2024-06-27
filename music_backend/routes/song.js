@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const song = require("../models/Song");
+const song = require("./models/Song");
 
 
 router.post("/create",passport.authenticate("jwt",{session:false}),
