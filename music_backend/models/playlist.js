@@ -7,29 +7,32 @@ const playlist = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-    }, 
-    thumbnail:{
+    },
+    thumbnail: {
         type: String,
         required: true,
     },
-    owner: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "user",
-    },
-    songs: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "song",
-       
-    },
- ],
- collaborators:[
-    {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "user",
-    },
- ],
+    owner: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "user",
+        },
+    ],
+    songs: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "song",
+
+        },
+    ],
+    collaborators: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "user",
+        },
+    ],
 
 });
- const playlistModel = mongoose.model("playlist",playlist);
+const playlistModel = mongoose.model("playlist", playlist);
 
- module.exports = playlistModel; 
+module.exports = playlistModel; 

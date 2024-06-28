@@ -40,7 +40,7 @@ async (req, res) => {
 router.get(
     "/get/playlist/:playlistId",
     passport.authenticate("jwt",{session:false}),
-    async(req,res) => {
+    async(req, res) => {
         // this concept is called req.params
         const playlistId = req.params.playlistId;
         // i need to find a playlist with the Id = playlistId 
@@ -57,7 +57,7 @@ router.get(
 router.get(
     "/get/artist/:artistId",
     passport.authenticate("jwt",{session:false}),
-    async(req,res)=> {
+    async(req, res)=> {
         const artistId = req.params.artistId;
 
         // We can do this : Check if artist id is given the artist Id exists
@@ -75,7 +75,7 @@ router.get(
 router.post(
     "/add/song",
     passport.authenticate("jwt",{session:false}),
-    async (req, res) =>{
+    async (req, res) => {
         const currentUser = req.user;
         const{playlistId, songId} = req.body;
         // Step 0: Get the playlist if valid
