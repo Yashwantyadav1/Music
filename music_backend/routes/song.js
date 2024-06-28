@@ -9,6 +9,7 @@ router.post(
     passport.authenticate("jwt", {session: false}),
     async (req, res) => {
         // req.user getss the user because of passport.authenticate
+        // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiNjY3ZTQzMTljNzUxZjNhM2ZjYjUzNTQwIiwiaWF0IjoxNzE5NTUwNzQ1fQ.ryh8g8iDsdZxM88xpHAA94udqzR38CbFFvBYZ6sFY78
         const {name, thumbnail, track} = req.body;
         if (!name || !thumbnail || !track) {
             return res
