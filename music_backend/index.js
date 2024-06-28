@@ -31,7 +31,8 @@ mongoose.connect(process.env.URI)
 let opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = 'thiskeysupposedToBeSecerate';
-passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
+passport.use(
+    new JwtStrategy(opts, function (jwt_payload, done) {
     User.findOne({id: jwt_payload.sub}, function(err, user) {
         // done (error ,doestheuserExist)
         if (err) {
@@ -44,7 +45,8 @@ passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
             // or you could create a new account
         }
     });
-}));
+})
+);
 
 // Define a basic route
 app.get("/", (req, res) => {
