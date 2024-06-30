@@ -1,6 +1,7 @@
 
 import TextInput from "../components/shared/TestInput";
 import PasswordInput from "../components/shared/PasswordInput";
+import { Link } from "react-router-dom";
 const LoginComponent = () => {
     return (
         <div className = "w-full h-full flex flex-col items-center">
@@ -16,7 +17,7 @@ const LoginComponent = () => {
                 </div>
                 <div className="w-full border border-solid border-gray-300"></div>
                 <div className="my-6 font-semibold text-lg">Don't have an account?</div>
-                <div className="border border-gray-500 text-gray-400 w-full flex items-center justify-center py-4 rounded-full font-bold">SIGN UP FOR MUSIC</div>
+                <div className="border border-gray-500 text-gray-400 w-full flex items-center justify-center py-4 rounded-full font-bold"><Link to="/signup">SIGN UP FOR MUSIC</Link></div>
             </div>
         </div>
     )
