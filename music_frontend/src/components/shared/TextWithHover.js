@@ -7,8 +7,8 @@ const TextWithHover = ({ displayText, active}) => {
                 
                 <div
                     className={`${
-                        active ? "text-white" : "text-gray-400"
-                    }  font-semibold hover:text-white`}
+                        active ? "text-white" : "text-gray-500"
+                    }  font-semibold text-lg hover:text-white`}
                 >
                     {displayText}
                 </div>
