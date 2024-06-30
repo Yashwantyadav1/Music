@@ -1,5 +1,6 @@
 import'./output.css';
 import LoginComponent from './routes/Login';
+import SignupComponent from './routes/Signup';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomeComponent from "./routes/Home";
 function App() {
@@ -8,9 +9,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<div>Home </div>} />
-        <Route path="/about" element={<div>About </div>} />
         <Route path="/login" element={<LoginComponent/>} />
-        <Route path="/home" element={<HomeComponent/>} />
+        <Route path="/signup" element={<SignupComponent/>} />
+
       </Routes>
     </BrowserRouter>
   </div>
