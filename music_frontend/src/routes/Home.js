@@ -1,4 +1,5 @@
-import spotify_logo from "../assets/images/spotify_logo_white.svg";
+import music_logo from "../assets/images/music_logo.svg";
+import IconText from "../components/shared/IconText";
 
 const Home = () => {
     return (
@@ -8,11 +9,7 @@ const Home = () => {
                 <div>
                     {/* This div is for logo */}
                     <div className="logoDiv p-6">
-                        <img
-                            src={spotify_logo}
-                            alt="spotify logo"
-                            width={125}
-                        />
+                        <img src={music_logo} alt="spotify logo" width={125}/>
                     </div>
                     <div className="py-5">
                         <IconText
@@ -74,3 +71,5 @@ const Home = () => {
         </div>
     );
 };
+
+export default Home;

@@ -8,9 +8,10 @@ function App() {
   <div className="w-screen h-screen font-poppins">
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<div>Home </div>} />
+        <Route path="/" element={<div>Hello</div>} />
         <Route path="/login" element={<LoginComponent/>} />
         <Route path="/signup" element={<SignupComponent/>} />
+        <Route path="/home" element={<HomeComponent/>} />
 
       </Routes>
     </BrowserRouter>
