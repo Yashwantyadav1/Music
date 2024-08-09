@@ -1,4 +1,7 @@
-import spotify_logo from "../assets/images/spotify_logo_white.svg";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import music_logo from "../assets/images/music_logo.svg";
+import IconText from "../components/shared/IconText";
+import TextWithHover from "../components/shared/TextWithHover";
 
 const Home = () => {
     return (
@@ -8,11 +11,7 @@ const Home = () => {
                 <div>
                     {/* This div is for logo */}
                     <div className="logoDiv p-6">
-                        <img
-                            src={spotify_logo}
-                            alt="spotify logo"
-                            width={125}
-                        />
+                        <img src={music_logo} alt="spotify logo" width={125} />
                     </div>
                     <div className="py-5">
                         <IconText
@@ -68,9 +67,11 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="content p-8 pt-0 overflow-auto">
-                   
+
                 </div>
             </div>
         </div>
     );
 };
+
+export default Home;
